@@ -7,7 +7,7 @@ namespace DotNetKoans.CSharp
 {
     public static class ExtensionMethods
     {
-        public static string HelloWorld(this Koan koan)
+        public static string HelloWorld(this Koan koan) //says we are adding functionality to Koan class
         {
             return "Hello!";
         }
@@ -17,7 +17,7 @@ namespace DotNetKoans.CSharp
             return String.Format("Hello, {0}!", name);
         }
 
-        public static string[] MethodWithVariableArguments(this Koan koan, params string[] names)
+        public static string[] MethodWithVariableArguments(this Koan koan, params string[] names) //without params here, it would just look for an array of strings. B/c of params any arguements that get passed in will be converted into a string array, so can pass in any number of string arguements
         {
             return names;
         }
@@ -160,7 +160,8 @@ namespace DotNetKoans.CSharp
         //the type based on the input. These are referred to
         //as generics
 
-        public static T GiveMeBack<T>(T p1)
+        public static T GiveMeBack<T>(T p1)//T means the type that the caller wants to use
+            //the caller passes in something of the type they want
         {
             return p1;
         }
@@ -169,6 +170,7 @@ namespace DotNetKoans.CSharp
         public void CallingGenericMethods()
         {
             Assert.Equal(typeof(int), GiveMeBack<int>(1).GetType());
+            //Assert.Equal(typeof(string), GiveMeBack<string>("foo").GetType());
 
             Assert.Equal("Hi!", GiveMeBack<string>("Hi!"));
         }
