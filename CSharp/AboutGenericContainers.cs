@@ -33,8 +33,8 @@ namespace DotNetKoans.CSharp
 			//is that you must cast the items you fetch back to the original type.
 			ArrayList list = new ArrayList();
 			list.Add(42);
-			int x = (int)list[0];
-            //x = (int)list[0];
+			int x = 0;
+            x = (int)list[0]; //must cast it to interact with it as an integer
             Assert.Equal(x, 42);
 		}
 		[Koan(4)]
@@ -111,7 +111,7 @@ namespace DotNetKoans.CSharp
 		{
 			//You can add multiple items to a list at once
 			List<int> list = new List<int>();
-			list.AddRange(new[] { 1, 2, 3 });
+			list.AddRange(new[] { 1, 2, 3 });//contrasting to add
 			Assert.Equal(3, list.Count);
 		}
 		[Koan(10)]
@@ -145,7 +145,7 @@ namespace DotNetKoans.CSharp
 		public void RemovingItems()
 		{
 			List<int> list = new List<int> { 2, 1, 2, 3 };
-			list.Remove(2);
+			list.Remove(2);//removes the first instance of, not [2]
 			Assert.Equal(new[] { 1, 2, 3 }, list.ToArray());
 		}
 		[Koan(15)]
@@ -163,7 +163,7 @@ namespace DotNetKoans.CSharp
 			Assert.Equal(0, stack.Count);
 		}
 		[Koan(16)]
-		public void StackOrder()
+		public void StackOrder()//thing or on FIFO (first in first out)
 		{
 			var stack = new Stack<int>();
 			stack.Push(1);
@@ -255,7 +255,9 @@ namespace DotNetKoans.CSharp
 			Dictionary<string, string> dictionary = new Dictionary<string, string>();
 			dictionary["one"] = "uno";
 			string result;
-			if (!dictionary.TryGetValue("two", out result))
+			if (!dictionary.TryGetValue("two", out result))//keyword out allows the TryGetValue to assign it to this variable
+                //out keyword says we're going to break the scope...TryGetValue return true/false/whatever and inbetween it does
+                //stuff
 			{
 				result = "dos";
 			}
@@ -287,7 +289,7 @@ namespace DotNetKoans.CSharp
 			Assert.Equal(false, dictionary.ContainsKey("two"));
 		}
 		[Koan(28)]
-		public void ValueExists()
+		public void ValueExists()//asking for a value is more expensive than asking for a key
 		{
 			Dictionary<string, string> dictionary = new Dictionary<string, string>();
 			dictionary["one"] = "uno";

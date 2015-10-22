@@ -71,7 +71,7 @@ namespace DotNetKoans.CSharp
 													{
 														return x.ToString(); 
 													});
-			Assert.Equal(new String[] { "1", "2", "3", "4" }, anonymous);
+			Assert.Equal(lambda, anonymous);
 			//The => pair is spoken as "going into". If you were talking about this 
 			//code with a peer, you would say "x going into..."
 		}
@@ -107,9 +107,9 @@ namespace DotNetKoans.CSharp
 													{
 														return x.ToString();
 													});
-			Assert.Equal(new String[] { "1", "2", "3", "4" }, anonymous);
+			Assert.Equal(lambda, anonymous);
 		}
-		[Koan(7)]
+		[Koan(7)]//this is the formate of lambda that we will see mostly
 		public void BlockNotNeededOnSingleStatementLambdas()
 		{
 			var numbers = new[] { 1, 2, 3, 4 };
@@ -119,7 +119,7 @@ namespace DotNetKoans.CSharp
 			});
 			var lambda = Array.ConvertAll(numbers, x => x.ToString());
 			//When you have only one statement, the curly brackets are not needed. What other two things are also missing?
-			Assert.Equal(new String[] { "1", "2", "3", "4" }, anonymous);
+			Assert.Equal(lambda, anonymous);
 		}
 	}
 }

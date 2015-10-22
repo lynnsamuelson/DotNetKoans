@@ -72,6 +72,7 @@ namespace DotNetKoans.CSharp
 			MyMath math = new MyMath();
 			BinaryOp op = math.Add;
 			PassMeTheDelegate(op);
+            //Assert.Equal(6, PassMeTheDelegate(op)); the test would be better placed here rather than line 70
 		}
 		[Koan(7)]
 		public void MethodCanBePassedDirectly()
@@ -89,9 +90,9 @@ namespace DotNetKoans.CSharp
 			Assert.Same(a, original);
 			a = MyMath.Subtract;
 			//a is now a different instance
-			Assert.NotEqual(a, original);
+			Assert.NotSame(a, original);
 		}
-		delegate int Curry(int val);
+		delegate int Curry(int val); //from functional programing
 		public class FunctionalTricks
 		{
 			public int Add5(int x)
@@ -150,7 +151,7 @@ namespace DotNetKoans.CSharp
 			Assert.Equal(54, x + y);
 		}
 		[Koan(12)]
-		public void BuiltInActionDelegateTakesInt()
+		public void BuiltInActionDelegateTakesInt()//action is a particular type of delegate
 		{
 			//With the release of generics in .Net 2.0 we got some delegates which will cover most of our needs. 
 			//You will see them in the base class libraries, so knowing about them will be helpful. 
@@ -189,7 +190,7 @@ namespace DotNetKoans.CSharp
 		[Koan(15)]
 		public void ActionInTheBcl()
 		{
-			//You will find Action used within the BCL, often when iterating over a container
+			//You will find Action used within the BCL(base class library), often when iterating over a container
 			string greeting = "Hello world";
 			Seen s = new Seen();
 
@@ -274,7 +275,7 @@ namespace DotNetKoans.CSharp
 			//type, Func<int>, then the method takes no paramters and returns an int.
 			//If you specify more than one parameter, then you are specifying the paramter types as well.
 
-			Func<string> d = FirstMonth;
+			Func<string> d = FirstMonth;//Func we specify the return type rather than the input type
 			Assert.Equal("January", d());
 		}
 		[Koan(21)]
@@ -283,7 +284,7 @@ namespace DotNetKoans.CSharp
 			//Like Action<>, Func<> is overloaded and can take a variable number of parameters.
 			//The first type parameters define the parameter types and the last one is the return type. So the following matches
 			//a method which takes two int parameters and returns a int.
-			Func<int, int, int> a = Add;
+			Func<int, int, int> a = Add;//first 2 are input types and last one is the return type
 			Assert.Equal(2, a(1, 1));
 		}
 

@@ -74,7 +74,8 @@ namespace DotNetKoans.CSharp
         }
 
         [Koan(6)]
-        public void TernaryOperators()
+        public void TernaryOperators()//Eliza's favorite opporator
+            //itisy, bitsy compressed if/else statement
         {
             Assert.Equal(1, (true ? 1 : 0));
             Assert.Equal(0, (false ? 1 : 0));
@@ -109,7 +110,8 @@ namespace DotNetKoans.CSharp
             bool isAboutControlStatements = false;
             bool isAboutMethods = false;
 
-            var myType = this;
+            var myType = this;//they started lying...this is not a type  "Me" would be a better name
+            //this is an instance of an object
 
             if (myType is Koan)
                 isKoan = true;
@@ -117,7 +119,7 @@ namespace DotNetKoans.CSharp
             if (myType is AboutControlStatements)
                 isAboutControlStatements = true;
 
-            if (myType is AboutMethods)
+            if (myType is AboutMethods)//about methods is a subclass of koans so we are not about methods
                 isAboutMethods = true;
 
             Assert.Equal(true, isKoan);
@@ -234,6 +236,8 @@ namespace DotNetKoans.CSharp
             catch
             {
                 whoCaughtTheException = "When we tried to move to the next item in the list";
+                //added an enumerator to the list while in the loop so the next time going through, the
+                //enumerator does not recognize the list and raises an exception.
             }
 
             Assert.Equal("When we tried to move to the next item in the list", whoCaughtTheException);
